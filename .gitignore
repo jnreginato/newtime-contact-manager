@@ -1,0 +1,91 @@
+# ============================================
+# ⚙️  GLOBAL CONFIGURATION
+# ============================================
+
+# OS / System
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs / Editors
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+/build/
+.dist/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# ============================================
+# 🐘  BACKEND (PHP / Mezzio)
+# ============================================
+
+# Composer
+/vendor/
+composer.lock
+
+# PHP Unit
+.phpunit.result.cache
+.phpunit.cache/
+coverage/
+
+# Cache & Temp
+cache/
+tmp/
+*.cache
+
+# Generated files
+*.bak
+*.old
+*.orig
+*.swp
+
+# ============================================
+# 🌐  FRONTEND (Vue 3 + Vite)
+# ============================================
+
+# Node
+/node_modules/
+package-lock.json
+
+# Build outputs
+/dist/
+.cache/
+.eslintcache
+
+# Vite / Temp
+.vite/
+vite.config.js.timestamp-*
+
+# ============================================
+# 🐳  DOCKER / ENVIRONMENT
+# ============================================
+
+# Docker
+docker-compose.override.yml
+docker-compose*.bak
+*.pid
+*.seed
+*.sock
+
+# Volumes / mounts
+data/
+db/
+storage/
+volumes/
+redis_data/
+mysql_data/
+sqlite_data/
