@@ -1,0 +1,15 @@
+name: Token Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-token:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Print GITHUB_TOKEN status
+        run: |
+          echo "Token available? ${{ secrets.GITHUB_TOKEN && 'Yes' || 'No' }}"
