@@ -15,13 +15,14 @@ desktop.ini
 
 # Logs
 *.log
+log/
 logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # Build artifacts
-/build/
+build/
 .dist/
 
 # Local environment files
@@ -29,12 +30,15 @@ yarn-error.log*
 .env.local
 .env.*.local
 
+*.crt
+*.key
+
 # ============================================
 # 🐘  BACKEND (PHP / Mezzio)
 # ============================================
 
 # Composer
-/vendor/
+vendor/
 composer.lock
 
 # PHP Unit
@@ -58,11 +62,11 @@ tmp/
 # ============================================
 
 # Node
-/node_modules/
+node_modules/
 package-lock.json
 
 # Build outputs
-/dist/
+dist/
 .cache/
 .eslintcache
 
