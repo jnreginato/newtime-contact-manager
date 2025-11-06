@@ -1,0 +1,16 @@
+includes:
+  - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+  - phpstan-baseline.neon
+
+parameters:
+  level: 9
+  paths:
+    - config
+    - public
+    - src
+    - tests
+  ignoreErrors:
+    - '#Call to an undefined method#'
+    - '#Using nullsafe property access on non-nullable type#'
+  reportUnmatchedIgnoredErrors: false
+  treatPhpDocTypesAsCertain: false

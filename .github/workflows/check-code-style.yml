@@ -1,0 +1,42 @@
+name: PHP code style checker
+
+on:
+  pull_request:
+    types: [ opened, edited, reopened, synchronize ]
+
+jobs:
+  code-style-check:
+    name: Checks compliance with PSR-12
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v4
+
+      - name: PHP installation
+        uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f
+        with:
+          php-version: 8.4
+          tools: composer, php-cs-fixer, phpcs
+          coverage: none
+
+      - name: Dependency installation
+        run: composer install --no-progress --no-interaction
+
+      - name: PHP Parallel Lint execution
+        run: vendor/bin/parallel-lint ./config ./public ./src ./tests
+
+      - name: PHP CodeSniffer execution
+        run: vendor/bin/phpcs
+
+      - name: PHP Mess Detector execution
+        run: vendor/bin/phpmd config/ public/ src/ tests/ text phpmd-ruleset.xml
+
+      - name: PHPStan execution
+        run: vendor/bin/phpstan analyse --configuration=phpstan.neon
+
+      - name: PHP-CS-Fixer (dry-run) execution
+        run: vendor/bin/php-cs-fixer fix --dry-run --diff

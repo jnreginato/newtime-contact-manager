@@ -12,6 +12,7 @@ desktop.ini
 .vscode/
 *.sublime-workspace
 *.sublime-project
+.run/
 
 # Logs
 *.log
@@ -50,6 +51,7 @@ coverage/
 cache/
 tmp/
 *.cache
+/backend/.phpcs-cache.json
 
 # Generated files
 *.bak

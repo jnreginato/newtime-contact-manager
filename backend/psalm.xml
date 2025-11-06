@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<psalm
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    xsi:noNamespaceSchemaLocation="https://getpsalm.org/schema/config.xsd"
+    errorLevel="3"
+    phpVersion="8.3"
+    findUnusedCode="false"
+    findUnusedVariables="true"
+    allowStringToStandInForClass="true"
+    useDocblockTypes="false"
+    errorBaseline="psalm-baseline.xml"
+>
+    <projectFiles>
+        <directory name="config"/>
+        <directory name="public"/>
+        <directory name="src"/>
+        <directory name="tests"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <ClassMustBeFinal errorLevel="suppress"/>
+        <MissingReturnType errorLevel="info"/>
+        <MissingParamType errorLevel="info"/>
+        <MissingOverrideAttribute errorLevel="info"/>
+    </issueHandlers>
+</psalm>
