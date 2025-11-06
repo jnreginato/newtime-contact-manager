@@ -1,0 +1,13 @@
+# Node & build
+node_modules
+npm-debug.log
+yarn-error.log
+
+# OS / IDE
+.DS_Store
+.idea
+.vscode
+*.swp
+
+# Environment / secrets
+.env

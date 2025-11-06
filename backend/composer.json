@@ -1,0 +1,47 @@
+{
+  "name": "jnreginato/newtime-contact-manager",
+  "description": "Backend API for user contact management (CRUD), developed for New Time technical test.",
+  "license": "proprietary",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Jonatan Reginato",
+      "email": "jonatan.reginato@gmail.com",
+      "homepage": "https://github.com/jnreginato",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.4"
+  },
+  "require-dev": {
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\": [
+        "tests/unit",
+        "tests/integration"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+    },
+    "apcu-autoloader": true,
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "8.4.14"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "scripts": {
+  }
+}

@@ -1,0 +1,53 @@
+name: newtime-contact-manager
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/backend/nginx/Dockerfile
+    container_name: newtime-contact-manager-nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8081:443"
+      - "8082:9001"
+    volumes:
+      - ./backend:/var/www
+      - ./docker/backend/nginx/log:/var/log/nginx
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/backend/php/Dockerfile
+      target: final
+    container_name: newtime-contact-manager-php
+    restart: unless-stopped
+    volumes:
+      - ./backend:/var/www
+      - ./docker/backend/php/log:/var/log
+      - ./docker/backend/php/tmp:/tmp
+
+  sqlite:
+    build:
+      context: .
+      dockerfile: ./docker/backend/sqlite/Dockerfile
+    container_name: newtime-contact-manager-sqlite
+    restart: unless-stopped
+    volumes:
+      - ./docker/backend/sqlite/database:/var/sqlite
+    healthcheck:
+      test: [ "CMD", "sqlite3", "/var/sqlite/database.sqlite", "SELECT 1;" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/frontend/node/Dockerfile
+    container_name: newtime-contact-manager-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - nginx
