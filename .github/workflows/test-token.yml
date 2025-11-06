@@ -1,4 +1,4 @@
-name: Token Test
+name: GitHub Token Test
 
 on:
   workflow_dispatch:
