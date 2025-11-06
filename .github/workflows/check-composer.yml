@@ -17,7 +17,7 @@ jobs:
       - name: PHP installation
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: 8.4
 
       - name: Dependency installation
         run: composer install --no-progress --no-interaction --ignore-platform-req=ext-ddtrace
