@@ -1,0 +1,104 @@
+filters:
+
+  - label: ⚠️ major
+    regexs:
+      - /BREAKING CHANGE/
+    events: [ pull_request ]
+    targets: [ comment ]
+
+  - label: 🧩 minor
+    regexs:
+      - /^feat:/
+      - /\bfeat(\(.*\))?:/i
+    targets: [ title ]
+
+  - label: 🔧 patch
+    regexs:
+      - /^build:/
+      - /\bbuild(\(.*\))?:/i
+      - /^chore:/
+      - /\bchore(\(.*\))?:/i
+      - /^ci:/
+      - /\bci(\(.*\))?:/i
+      - /^docs:/
+      - /\bdocs(\(.*\))?:/i
+      - /^fix:/
+      - /\bfix(\(.*\))?:/i
+      - /^perf:/
+      - /\bperf(\(.*\))?:/i
+      - /^refactor:/
+      - /\brefactor(\(.*\))?:/i
+      - /^revert:/
+      - /\brevert(\(.*\))?:/i
+      - /^style:/
+      - /\bstyle(\(.*\))?:/i
+      - /^test:/
+      - /\btest(\(.*\))?:/i
+    events: [ pull_request ]
+    targets: [ title ]
+
+  - label: 🚨 breaking
+    regexs:
+      - /BREAKING CHANGE/
+    events: [ pull_request ]
+    targets: [ comment ]
+
+  - label: ✨ feature
+    regexs:
+      - /^feat:/
+      - /\bfeat(\(.*\))?:/i
+    targets: [ title ]
+
+  - label: 🛠 changed
+    regexs:
+      - /^build:/
+      - /\bbuild(\(.*\))?:/i
+      - /^chore:/
+      - /\bchore(\(.*\))?:/i
+      - /^chore\\([a-z0-9-]+\\):/
+      - /^ci:/
+      - /\bci(\(.*\))?:/i
+      - /^docs:/
+      - /\bchore(\(.*\))?:/i
+      - /^perf:/
+      - /\bperf(\(.*\))?:/i
+      - /^refactor:/
+      - /\brefactor(\(.*\))?:/i
+      - /^revert:/
+      - /\brevert(\(.*\))?:/i
+      - /^style:/
+      - /\bstyle(\(.*\))?:/i
+      - /^test:/
+      - /\btest(\(.*\))?:/i
+    targets: [ title ]
+
+  - label: 💀 deprecated
+    regexs:
+      - /deprecated/
+    events: [ pull_request ]
+    targets: [ comment ]
+
+  - label: 🗑 removed
+    regexs:
+      - /removed/
+    events: [ pull_request ]
+    targets: [ comment ]
+
+  - label: 🔒 security
+    regexs:
+      - /security/
+    events: [ pull_request ]
+    targets: [ comment ]
+
+  - label: 🤝 dependency
+    regexs:
+      - /dependency/
+    events: [ pull_request ]
+    targets: [ comment ]
+
+  - label: 🐛 fixed
+    regexs:
+      - /^fix:/
+      - /\bfix(\(.*\))?:/i
+    events: [ pull_request ]
+    targets: [ title, comment ]
