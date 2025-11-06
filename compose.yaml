@@ -38,3 +38,14 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/frontend/node/Dockerfile
+    container_name: newtime-contact-manager-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - nginx
+    restart: unless-stopped
