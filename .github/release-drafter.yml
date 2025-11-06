@@ -1,0 +1,141 @@
+name-template: 'v$RESOLVED_VERSION 🚀'
+tag-template: 'v$RESOLVED_VERSION'
+template: |
+  ## What changed
+
+  Comparison with the previous version: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+
+  $CHANGES
+
+change-template: '* $TITLE (#$NUMBER) @$AUTHOR'
+change-title-escapes: '\<*_&'
+filter-by-commitish: true
+commitish: 'refs/heads/main'
+exclude-labels:
+  - 'skip-changelog'
+
+categories:
+
+  - title: '⭐️ Added'
+    labels:
+      - '✨ feature'
+
+  - title: '🛠 Changed'
+    labels:
+      - '🛠 changed'
+
+  - title: '💀 Deprecated'
+    labels:
+      - '💀 deprecated'
+
+  - title: '🗑 Removed'
+    labels:
+      - '🗑 removed'
+
+  - title: '🐛 Fixed'
+    labels:
+      - '🐛 fixed'
+
+  - title: '🔒 Security implemented'
+    labels:
+      - '🔒 security'
+
+  - title: '🤝🏽 Modified dependency'
+    labels:
+      - '🤝 dependency'
+
+  - title: '🚨 Breaking changed'
+    labels:
+      - '🚨 breaking'
+
+version-resolver:
+
+  major:
+    labels:
+      - '⚠️ major'
+      - '🚨 breaking'
+
+  minor:
+    labels:
+      - '🧩 minor'
+      - '✨ feature'
+
+  patch:
+    labels:
+      - '🔧 patch'
+      - '🛠 changed'
+      - '💀 deprecated'
+      - '🗑 removed'
+      - '🐛 fixed'
+      - '🔒 security'
+      - '🤝 dependency'
+
+  default: patch
+
+replacers:
+
+  - search: '/build\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'build: '
+    replace: ''
+
+  - search: '/chore\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'chore: '
+    replace: ''
+
+  - search: '/ci\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'ci: '
+    replace: ''
+
+  - search: '/docs\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'docs: '
+    replace: ''
+
+  - search: '/feat\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'feat: '
+    replace: ''
+
+  - search: '/fix\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'fix: '
+    replace: ''
+
+  - search: '/perf\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'perf: '
+    replace: ''
+
+  - search: '/refactor\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'refactor: '
+    replace: ''
+
+  - search: '/revert\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'revert: '
+    replace: ''
+
+  - search: '/style\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'style: '
+    replace: ''
+
+  - search: '/test\([0-9a-z]{1,}\): /'
+    replace: ''
+
+  - search: 'test: '
+    replace: ''
