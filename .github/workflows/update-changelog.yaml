@@ -1,0 +1,35 @@
+name: Changelog update
+
+on:
+  release:
+    types: [ released ]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-changelog:
+    name: Update the CHANGELOG
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update the CHANGELOG.md file.
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: ${{ github.event.release.tag_name }}
+          release-notes: ${{ github.event.release.body }}
+
+      - name: Performs commit of the CHANGELOG update.
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: changelog-update
+          create_branch: true
+          file_pattern: CHANGELOG.md
+          commit_message: 'docs: update CHANGELOG'
+          commit_author: jnreginato <jnreginato@users.noreply.github.com>
