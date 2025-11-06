@@ -1,5 +1,12 @@
 #!/bin/bash -e
 
+if [[ ! -f .env ]]; then
+  cp .env.example .env
+  echo "$(date '+%Y-%m-%d %H:%M:%S,%3N') INFO Environment settings file generated."
+else
+  echo "$(date '+%Y-%m-%d %H:%M:%S,%3N') INFO .env already exists; keeping current values."
+fi
+
 echo "$(date '+%Y-%m-%d %H:%M:%S,%3N') INFO: Enabling exec mode for /var/www/bin folder files..."
 chmod -R +x /var/www/bin
 
@@ -20,6 +27,9 @@ composer install \
     --audit
 
 composer dump-autoload --optimize --apcu
+
+echo "$(date '+%Y-%m-%d %H:%M:%S,%3N') INFO: Enabling development mode..."
+composer development-mode-enable
 
 if [[ -n "$(ls /etc/supervisor.d/*.conf 2>/dev/null)" ]]; then
     echo "$(date '+%Y-%m-%d %H:%M:%S,%3N') INFO: Starting supervisor..."
