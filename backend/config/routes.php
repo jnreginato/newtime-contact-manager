@@ -6,7 +6,5 @@ use Laminas\Diactoros\Response\HtmlResponse;
 use Mezzio\Application;
 
 return static function (Application $app): void {
-    $app->get('/', function () {
-        return new HtmlResponse('<h1>Hello, world!</h1>');
-    });
+    $app->get('/', static fn () => new HtmlResponse('<h1>Hello, world!</h1>'));
 };

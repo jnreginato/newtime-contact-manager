@@ -3,7 +3,7 @@
 <!-- https://docs.phpunit.de/en/12.1/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="backend/vendor/autoload.php"
+         bootstrap="vendor/autoload.php"
          colors="true"
          columns="max"
          executionOrder="depends,defects">
@@ -13,23 +13,23 @@
             <directory>tests</directory>
         </testsuite>
         <testsuite name="unit-tests">
-            <directory>backend/tests/unit</directory>
-            <exclude>backend/tests/integration</exclude>
+            <directory>tests/unit</directory>
+            <exclude>tests/integration</exclude>
         </testsuite>
         <testsuite name="integration-tests">
-            <directory>backend/tests/integration</directory>
-            <exclude>backend/tests/unit</exclude>
+            <directory>tests/integration</directory>
+            <exclude>tests/unit</exclude>
         </testsuite>
     </testsuites>
 
     <source>
         <include>
-            <directory>backend/src</directory>
+            <directory>src</directory>
         </include>
     </source>
 
     <logging>
-        <junit outputFile="backend/target/logs/junit.xml"/>
-        <teamcity outputFile="backend/target/logs/teamcity.txt"/>
+        <junit outputFile="target/logs/junit.xml"/>
+        <teamcity outputFile="target/logs/teamcity.txt"/>
     </logging>
 </phpunit>

@@ -13,12 +13,12 @@
     errorBaseline="psalm-baseline.xml"
 >
     <projectFiles>
-        <directory name="backend/config"/>
-        <directory name="backend/public"/>
-        <directory name="backend/src"/>
-        <directory name="backend/tests"/>
+        <directory name="config"/>
+        <directory name="public"/>
+        <directory name="src"/>
+        <directory name="tests"/>
         <ignoreFiles>
-            <directory name="backend/vendor"/>
+            <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
 

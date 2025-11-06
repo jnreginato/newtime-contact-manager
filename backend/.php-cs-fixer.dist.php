@@ -7,9 +7,9 @@ use PhpCsFixer\Finder;
 use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 $finder = Finder::create()
-    ->in(__DIR__ . '/backend/config')
-    ->in(__DIR__ . '/backend/public')
-    ->exclude(__DIR__ . '/backend/vendor');
+    ->in(__DIR__ . '/config')
+    ->in(__DIR__ . '/public')
+    ->exclude(__DIR__ . '/vendor');
 
 return (new Config())
     ->setParallelConfig(ParallelConfigFactory::detect())
