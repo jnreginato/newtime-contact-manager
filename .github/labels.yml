@@ -1,0 +1,47 @@
+- name: "✨ feature"
+  description: "New feature added to the application."
+  color: "0e8a16"
+
+- name: "🛠 changed"
+  description: "Changes in existing behaviors that do not cause a break in compatibility."
+  color: "cfd3d7"
+
+- name: "💀 deprecated"
+  description: "Obsolete functionality."
+  color: "f9d0c4"
+
+- name: "🗑 removed"
+  description: "Functionality removed."
+  color: "f9d0c4"
+
+- name: "🐛 fixed"
+  description: "Bug fix."
+  color: "1d76db"
+
+- name: "🔒 security"
+  description: "Security-related change."
+  color: "b60205"
+
+- name: "🤝 dependency"
+  description: "Updating or changing a dependency."
+  color: "0052cc"
+
+- name: "🚨 breaking"
+  description: "A change that breaks compatibility with previous versions."
+  color: "e11d21"
+
+- name: "⚠️ major"
+  description: "The main change that causes a breaking change."
+  color: "e11d21"
+
+- name: "🧩 minor"
+  description: "A compatible addition or change that doesn't break anything."
+  color: "0e8a16"
+
+- name: "🔧 patch"
+  description: "Compatible and safe correction or adjustment (bug fix, etc.)."
+  color: "1d76db"
+
+- name: "🐛 bug"
+  description: "Report of incorrect or unexpected behavior."
+  color: "d73a4a"
