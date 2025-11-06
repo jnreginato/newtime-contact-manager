@@ -44,8 +44,10 @@ services:
       context: .
       dockerfile: ./docker/frontend/node/Dockerfile
     container_name: newtime-contact-manager-frontend
+    restart: unless-stopped
     ports:
       - "5173:80"
+    volumes:
+      - ./frontend:/app
     depends_on:
       - nginx
-    restart: unless-stopped
