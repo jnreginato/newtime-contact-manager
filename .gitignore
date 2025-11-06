@@ -51,6 +51,7 @@ coverage/
 cache/
 tmp/
 *.cache
+/backend/.phpcs-cache.json
 
 # Generated files
 *.bak
