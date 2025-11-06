@@ -1,0 +1,6 @@
+🧩 minor: [ 'feature', 'feat' ]
+🔧 patch: [ 'build', 'chore', 'ci', 'docs', 'fix', 'perf', 'refactor', 'revert', 'style', 'test' ]
+
+✨ feature: [ 'feature', 'feat' ]
+🛠 changed: [ 'build', 'chore', 'ci', 'docs', 'perf', 'refactor', 'revert', 'style', 'test' ]
+🐛 fixed: [ 'fix' ]

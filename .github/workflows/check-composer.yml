@@ -1,0 +1,26 @@
+name: Verification of composer.json
+
+on:
+  pull_request:
+    paths:
+      - composer.json
+
+jobs:
+  composer-check:
+    name: Check normalization
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v4
+
+      - name: PHP installation
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+
+      - name: Dependency installation
+        run: composer install --no-progress --no-interaction --ignore-platform-req=ext-ddtrace
+
+      - name: Validate
+        run: composer normalize --dry-run

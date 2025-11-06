@@ -1,0 +1,48 @@
+name: Pull request verification
+
+on:
+  pull_request:
+    types: [ opened, edited, reopened, synchronize ]
+
+jobs:
+  pull-request-check:
+    name: Check the title
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check the character limit.
+        uses: actions/github-script@v6
+        with:
+          script: |
+            // Checks if character limit is exceeded.
+            const prTitle = context.payload.pull_request.title;
+            const maxLength = 50;
+            if (prTitle.length > maxLength) {
+              core.setFailed(
+                `The PR title exceeds the ${maxLength} character limit (current: ${prTitle.length}).`
+              );
+            }
+
+      - name: Checks compliance with conventional-commits.
+        uses: actions/github-script@v6
+        with:
+          script: |
+            // Check if it follows the Conventional Commits standard.
+            const prTitle = context.payload.pull_request.title;
+            // Simple Regex to check Conventional Commits:
+            //   1) type: feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert
+            //   2) (scope) optional
+            //   3) followed by ": "
+            //   4) first character of the description in lowercase [a-z]
+            //   5) and then anything
+            const conventionalCommitRegex = new RegExp(
+              '^(feat|fix|docs|style|refactor|test|chore|build|ci|perf|revert)(\\([a-zA-Z0-9_.-]+\\))?(!)?:\\s[a-z].*$'
+            );
+
+            if (!conventionalCommitRegex.test(prTitle)) {
+              core.setFailed(
+                'The PR title does not follow the conventional-commit standard. ' +
+                'Example: "feat(login): add authentication". ' +
+                'See more in https://www.conventionalcommits.org/pt-br/v1.0.0/'
+              );
+            }

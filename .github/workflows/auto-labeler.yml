@@ -1,0 +1,26 @@
+name: PR label automation
+
+on:
+  pull_request:
+    types: [ opened, edited, reopened, synchronize ]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    name: Assigns labels automatically.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Performs verification by PR title and description.
+        uses: hoho4190/issue-pr-labeler@v2.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          disable-bot: true
+          config-file-name: labeler-by-title-and-body.yml
+      - name: Performs verification by branch name.
+        uses: TimonVS/pr-labeler-action@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/labeler-by-branch-name.yml
