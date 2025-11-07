@@ -25,6 +25,7 @@ $aggregator = new ConfigAggregator(
         Application\ConfigProvider::class,
         Infrastructure\Api\ConfigProvider::class,
         Infrastructure\Config\ConfigProvider::class,
+        Infrastructure\Log\ConfigProvider::class,
 
         new ArrayProvider($cacheConfig),
         new PhpFileProvider('config/autoload/global.php'),
