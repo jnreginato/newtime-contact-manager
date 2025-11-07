@@ -1,0 +1,45 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Dotenv\Dotenv;
+use App\Infrastructure\Persistence\Doctrine\Console;
+use App\Infrastructure\Persistence\Doctrine\EntityManager;
+use Psr\Container\ContainerInterface;
+
+chdir(dirname((string) realpath(__DIR__)));
+
+define('START_EXECUTION_TIME', microtime(true));
+define('RESOURCE_USAGE', getrusage() ?: []);
+define('APP_ROOT', dirname((string) realpath(__DIR__)));
+
+require_once 'vendor/autoload.php';
+
+$dotenv = Dotenv::createUnsafeImmutable(APP_ROOT);
+$dotenv->load();
+
+/** @var ContainerInterface $container */
+$container = require 'config/container.php';
+
+try {
+    $entityManagerProvider = new Console\MultiEntityManagerProvider(
+        [
+            'default' => (new EntityManager\EntityManagerAdapterFactory())(
+                $container,
+                'persistence.doctrine.core_sqlite.entity_manager',
+            ),
+        ]
+    );
+
+    $customCommands = [];
+
+    ConsoleRunner::run(
+        $entityManagerProvider,
+        $customCommands
+    );
+} catch (Throwable $e) {
+    echo $e->getCode() . ': ' . $e->getMessage() . PHP_EOL;
+    exit(1);
+}
