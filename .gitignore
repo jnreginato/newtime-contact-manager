@@ -94,3 +94,5 @@ volumes/
 redis_data/
 mysql_data/
 sqlite_data/
+
+/docker/backend/sqlite/database/database.sqlite
