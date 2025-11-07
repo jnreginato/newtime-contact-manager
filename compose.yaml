@@ -24,6 +24,7 @@ services:
       - ./backend:/var/www
       - ./docker/backend/php/log:/var/log
       - ./docker/backend/php/tmp:/tmp
+      - ./docker/backend/sqlite/database:/var/sqlite
 
   sqlite:
     build:
