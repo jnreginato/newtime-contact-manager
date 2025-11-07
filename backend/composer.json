@@ -15,6 +15,7 @@
     "php": "^8.4",
     "ext-intl": "*",
     "beberlei/assert": "^3.3",
+    "doctrine/orm": "^3.5",
     "laminas/laminas-config-aggregator": "^1.19",
     "laminas/laminas-diactoros": "^3.8",
     "laminas/laminas-servicemanager": "^4.5",
