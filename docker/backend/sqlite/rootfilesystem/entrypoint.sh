@@ -3,9 +3,12 @@
 DB_PATH="/var/sqlite/database.sqlite"
 TABLE_SQL="CREATE TABLE IF NOT EXISTS contacts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  surname TEXT NOT NULL,
-  email TEXT NOT NULL UNIQUE
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  created_at TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+  updated_at TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+  deleted_at TEXT DEFAULT NULL
 );"
 
 # Colored logging functions
