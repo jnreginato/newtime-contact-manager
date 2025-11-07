@@ -19,6 +19,7 @@
     "mezzio/mezzio": "^3.25",
     "mezzio/mezzio-fastroute": "^3.14",
     "mezzio/mezzio-helpers": "^5.20",
+    "symfony/validator": "^7.3",
     "vlucas/phpdotenv": "^5.6"
   },
   "require-dev": {
