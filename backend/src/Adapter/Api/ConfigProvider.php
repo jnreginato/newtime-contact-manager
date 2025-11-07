@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Adapter\Api;
 
 use App\Adapter\Api\Middleware\ValidatedInputMiddlewareFactory;
-use App\Adapter\Api\V1\Dto\CreateContactInput;
+use App\Adapter\Api\V1\Input\CreateContactInput;
 use App\Adapter\Api\V1\Handler\CreateContactHandler;
 use App\Adapter\Api\V1\Handler\CreateContactHandlerFactory;
 
