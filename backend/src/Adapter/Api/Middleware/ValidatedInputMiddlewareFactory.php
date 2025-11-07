@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Adapter\Api\Middleware;
 
-class ValidateInputMiddleware
+class ValidatedInputMiddlewareFactory
 {
 
 }

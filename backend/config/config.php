@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Adapter;
+use App\Application;
 use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
 use Laminas\ConfigAggregator\PhpFileProvider;
@@ -17,6 +19,9 @@ $aggregator = new ConfigAggregator(
         Mezzio\Router\ConfigProvider::class,
         Mezzio\Router\FastRouteRouter\ConfigProvider::class,
         Laminas\Diactoros\ConfigProvider::class,
+
+        Adapter\Api\ConfigProvider::class,
+        Application\ConfigProvider::class,
 
         new ArrayProvider($cacheConfig),
         new PhpFileProvider('config/autoload/global.php'),
