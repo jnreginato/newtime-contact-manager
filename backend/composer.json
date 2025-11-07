@@ -14,12 +14,14 @@
   "require": {
     "php": "^8.4",
     "ext-intl": "*",
+    "beberlei/assert": "^3.3",
     "laminas/laminas-config-aggregator": "^1.19",
     "laminas/laminas-diactoros": "^3.8",
     "laminas/laminas-servicemanager": "^4.5",
     "mezzio/mezzio": "^3.25",
     "mezzio/mezzio-fastroute": "^3.14",
     "mezzio/mezzio-helpers": "^5.20",
+    "monolog/monolog": "^3.9",
     "symfony/validator": "^7.3",
     "vlucas/phpdotenv": "^5.6"
   },
