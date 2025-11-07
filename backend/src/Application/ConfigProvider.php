@@ -37,6 +37,9 @@ final readonly class ConfigProvider
             'factories' => [
                 // UseCases
                 CreateContactUseCase::class => CreateContactUseCaseFactory::class,
+
+                // Support
+                Support\Transaction\TransactionRunner::class => Support\Transaction\TransactionRunnerFactory::class,
             ],
         ];
     }
