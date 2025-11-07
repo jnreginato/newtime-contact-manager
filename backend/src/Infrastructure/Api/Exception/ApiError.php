@@ -7,11 +7,12 @@ namespace App\Infrastructure\Api\Exception;
 use Override;
 
 /**
- * Interface ApiErrorInterface.
+ * Class ApiError
  *
- * This interface defines the structure for API error responses.
- * It includes methods to retrieve various details about the error, such as
- * status code, error code, title, detail, and source information.
+ * This class represents an API error response. It implements the ApiErrorInterface
+ * to provide a standardized way to represent API errors.
+ * It contains properties for HTTP status code, application-specific error code,
+ * title, detail, and source information.
  *
  * @phpstan-type ErrorSource array{
  *     pointer?: string,
