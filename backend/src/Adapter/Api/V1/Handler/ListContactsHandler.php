@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Adapter\Api\V1\Handler;
 
 use App\Adapter\Api\V1\Input\ListContactsInput;
-use App\Adapter\Api\V1\Presenter\ContactOutput;
 use App\Application\UseCase\ListContactsUseCase;
+use App\Infrastructure\Api\Response\OutputInterface;
 use Laminas\Diactoros\Response\JsonResponse;
 use Override;
 use Psr\Http\Message\ResponseInterface;
@@ -50,7 +50,7 @@ final readonly class ListContactsHandler implements RequestHandlerInterface
         $output = ($this->useCase)($input->toQuery());
 
         $data = array_map(
-            static fn (ContactOutput $contactOutput): array => $contactOutput->getFields(),
+            static fn (OutputInterface $contactOutput): array => $contactOutput->getFields(),
             $output->getData(),
         );
 
