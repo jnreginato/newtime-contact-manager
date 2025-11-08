@@ -15,8 +15,9 @@ use function array_merge;
  * It combines the functionality of QueryParser and BodyParser to provide a
  * unified interface for extracting data from both sources.
  *
+ * @phpstan-type QueryParameters array{page?: array{size?: int, number?: int}}
  * @phpstan-type RequestBody array<string, mixed>
- * @phpstan-type QueryData array{resourceId: mixed}
+ * @phpstan-type QueryData array{resourceId: mixed, pageSize: int, pageNumber: int}
  * @phpstan-type BodyData array<string, mixed>
  * @phpstan-type Data QueryData & BodyData
  */
@@ -38,12 +39,13 @@ final readonly class InputParser implements InputParserInterface
      * Parses the query parameters and body of the request.
      *
      * @param mixed $resourceId The identity of the resource being queried, it can be null.
+     * @param QueryParameters $queryParams The query parameters from the request.
      * @param RequestBody $requestBody The body of the request.
      */
     #[Override]
-    public function parse(mixed $resourceId, array $requestBody): void
+    public function parse(mixed $resourceId, array $queryParams, array $requestBody): void
     {
-        $this->queryParser->parse($resourceId);
+        $this->queryParser->parse($resourceId, $queryParams);
         $this->bodyParser->parse($requestBody);
     }
 
@@ -69,11 +71,12 @@ final readonly class InputParser implements InputParserInterface
      * and body separately, without needing to pass an identity.
      *
      * @param string|null $resourceId The query string from the request.
+     * @param QueryParameters $queryParams The query parameters from the request.
      */
     #[Override]
-    public function parseQuery(?string $resourceId): void
+    public function parseQuery(?string $resourceId, array $queryParams): void
     {
-        $this->queryParser->parse($resourceId);
+        $this->queryParser->parse($resourceId, $queryParams);
     }
 
     /**

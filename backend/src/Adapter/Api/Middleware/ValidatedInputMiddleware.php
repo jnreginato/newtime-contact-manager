@@ -56,10 +56,11 @@ final readonly class ValidatedInputMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $attributeId = $request->getAttribute('id');
+        $queryParams = $request->getQueryParams();
         $parsedBody = (array) ($request->getParsedBody() ?? []);
 
         try {
-            $this->inputParser->parse($attributeId, $parsedBody);
+            $this->inputParser->parse($attributeId, $queryParams, $parsedBody);
             $dto = new ($this->dtoClass)($this->inputParser->getData());
             $this->inputValidator->validate($dto);
         } catch (Throwable $exception) {
