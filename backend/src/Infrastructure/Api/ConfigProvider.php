@@ -28,6 +28,8 @@ use App\Infrastructure\Api\Response\ApiThrowableResponseFactoryInterface;
  *     factories?: array<class-string, class-string>,
  *     invokables?: array<class-string, class-string>,
  * }
+ *
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  */
 final class ConfigProvider
 {
