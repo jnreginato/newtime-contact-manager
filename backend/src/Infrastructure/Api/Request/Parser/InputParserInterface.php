@@ -10,8 +10,9 @@ namespace App\Infrastructure\Api\Request\Parser;
  * This interface defines the methods required for parsing and validating input data
  * in API requests, including query parameters and request body.
  *
+ * @phpstan-type QueryParameters array{page?: array{size?: int, number?: int}}
  * @phpstan-type RequestBody array<string, mixed>
- * @phpstan-type QueryData array{resourceId: mixed}
+ * @phpstan-type QueryData array{resourceId: mixed, pageSize: int, pageNumber: int}
  * @phpstan-type BodyData array<string, mixed>
  * @phpstan-type Data QueryData & BodyData
  */
@@ -24,9 +25,10 @@ interface InputParserInterface
      * and the request body, and processes them to extract relevant data.
      *
      * @param mixed $resourceId The identity of the resource being queried, it can be null.
+     * @param QueryParameters $queryParams The query parameters from the request.
      * @param RequestBody $requestBody The body of the request.
      */
-    public function parse(mixed $resourceId, array $requestBody): void;
+    public function parse(mixed $resourceId, array $queryParams, array $requestBody): void;
 
     /**
      * Returns the combined data from both query and body parsers.
@@ -45,8 +47,9 @@ interface InputParserInterface
      * validates them, and stores the attributes in a data collection.
      *
      * @param string|null $resourceId The query string from the request.
+     * @param QueryParameters $queryParams The query parameters from the request.
      */
-    public function parseQuery(?string $resourceId): void;
+    public function parseQuery(?string $resourceId, array $queryParams): void;
 
     /**
      * Parses the request body and extracts data from it.

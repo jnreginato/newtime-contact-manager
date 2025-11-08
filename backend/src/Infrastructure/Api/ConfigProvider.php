@@ -10,6 +10,8 @@ use App\Infrastructure\Api\Request\DataCapture\DataCollection;
 use App\Infrastructure\Api\Request\DataCapture\DataCollectionInterface;
 use App\Infrastructure\Api\Request\ErrorCapture\ErrorAggregator;
 use App\Infrastructure\Api\Request\ErrorCapture\ErrorAggregatorInterface;
+use App\Infrastructure\Api\Request\Mapper\ParametersMapperFactory;
+use App\Infrastructure\Api\Request\Mapper\ParametersMapperInterface;
 use App\Infrastructure\Api\Request\Parser\BodyParserFactory;
 use App\Infrastructure\Api\Request\Parser\BodyParserInterface;
 use App\Infrastructure\Api\Request\Parser\InputParserFactory;
@@ -57,6 +59,7 @@ final class ConfigProvider
                 BodyParserInterface::class => BodyParserFactory::class,
                 InputParserInterface::class => InputParserFactory::class,
                 InputValidatorInterface::class => InputValidatorFactory::class,
+                ParametersMapperInterface::class => ParametersMapperFactory::class,
                 QueryParserInterface::class => QueryParserFactory::class,
                 ThrowableConverterInterface::class => ThrowableConverterFactory::class,
             ],

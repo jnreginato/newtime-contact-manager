@@ -112,7 +112,7 @@ abstract class QueryRepository extends Repository implements QueryRepositoryInte
     #[Override]
     public function list(string $outputClass): PaginatedResultInterface
     {
-        return $this->fetchPaginatedResourcesWithoutRelationships($this->fetchResources(), $outputClass);
+        return $this->fetchPaginatedResources($this->fetchResources(), $outputClass);
     }
 
     /**
@@ -147,10 +147,8 @@ abstract class QueryRepository extends Repository implements QueryRepositoryInte
      * @param class-string<OutputInterface> $outputClass The class name of the output DTO to map the resources to.
      * @return PaginatedResultInterface The paginated data containing the list of resources and pagination details.
      */
-    private function fetchPaginatedResourcesWithoutRelationships(
-        array $list,
-        string $outputClass,
-    ): PaginatedResultInterface {
+    private function fetchPaginatedResources(array $list, string $outputClass): PaginatedResultInterface
+    {
         if ($this->queryBuilder === null) {
             $this->makePaginatedResourcesQueryBuilder();
         }

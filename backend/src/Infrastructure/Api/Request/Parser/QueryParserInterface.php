@@ -9,7 +9,8 @@ namespace App\Infrastructure\Api\Request\Parser;
  *
  * This interface defines the contract for parsing query parameters in an API request.
  *
- * @phpstan-type Data array{resourceId: mixed}
+ * @phpstan-type QueryParameters array{page?: array{size?: int, number?: int}}
+ * @phpstan-type Data array{resourceId: mixed, pageSize: int, pageNumber: int}
  */
 interface QueryParserInterface
 {
@@ -17,8 +18,9 @@ interface QueryParserInterface
      * Parses the query parameters and stores the data in the query parser.
      *
      * @param mixed $resourceId The identity of the resource being queried, it can be null.
+     * @param QueryParameters $parameters The query parameters from the request.
      */
-    public function parse(mixed $resourceId): void;
+    public function parse(mixed $resourceId, array $parameters = []): void;
 
     /**
      * Returns the parsed data from the query parser.

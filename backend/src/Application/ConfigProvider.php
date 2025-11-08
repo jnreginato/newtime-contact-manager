@@ -6,6 +6,8 @@ namespace App\Application;
 
 use App\Application\UseCase\CreateContactUseCase;
 use App\Application\UseCase\CreateContactUseCaseFactory;
+use App\Application\UseCase\ListContactsUseCase;
+use App\Application\UseCase\ListContactsUseCaseFactory;
 
 /**
  * The configuration provider for the Application module.
@@ -36,6 +38,7 @@ final readonly class ConfigProvider
         return [
             'factories' => [
                 // UseCases
+                ListContactsUseCase::class => ListContactsUseCaseFactory::class,
                 CreateContactUseCase::class => CreateContactUseCaseFactory::class,
 
                 // Support

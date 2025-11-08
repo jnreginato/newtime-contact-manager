@@ -7,7 +7,10 @@ namespace App\Adapter\Api;
 use App\Adapter\Api\Middleware\ValidatedInputMiddlewareFactory;
 use App\Adapter\Api\V1\Handler\CreateContactHandler;
 use App\Adapter\Api\V1\Handler\CreateContactHandlerFactory;
+use App\Adapter\Api\V1\Handler\ListContactsHandler;
+use App\Adapter\Api\V1\Handler\ListContactsHandlerFactory;
 use App\Adapter\Api\V1\Input\CreateContactInput;
+use App\Adapter\Api\V1\Input\ListContactsInput;
 
 /**
  * The configuration provider for the Api Adapter module.
@@ -40,9 +43,11 @@ final readonly class ConfigProvider
         return [
             'factories' => [
                 // Middleware to bind and validate input
+                'ListContactsMiddleware' => new ValidatedInputMiddlewareFactory(ListContactsInput::class),
                 'CreateContactMiddleware' => new ValidatedInputMiddlewareFactory(CreateContactInput::class),
 
                 // Handlers
+                ListContactsHandler::class => ListContactsHandlerFactory::class,
                 CreateContactHandler::class => CreateContactHandlerFactory::class,
             ],
         ];
