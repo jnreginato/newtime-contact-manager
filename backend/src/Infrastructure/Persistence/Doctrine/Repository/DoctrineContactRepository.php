@@ -44,7 +44,7 @@ final class DoctrineContactRepository extends QueryRepository implements Contact
     #[Override]
     public function byId(Stringable $identifier): ?Contact
     {
-        $contact = $this->find((string)$identifier);
+        $contact = $this->find((string) $identifier);
 
         return $contact instanceof Contact
             ? $contact
