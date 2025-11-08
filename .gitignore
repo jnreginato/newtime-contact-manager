@@ -16,7 +16,6 @@ desktop.ini
 
 # Logs
 *.log
-log/
 logs/
 npm-debug.log*
 yarn-debug.log*
@@ -95,3 +94,5 @@ volumes/
 redis_data/
 mysql_data/
 sqlite_data/
+
+/docker/backend/sqlite/database/database.sqlite

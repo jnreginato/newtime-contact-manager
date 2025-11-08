@@ -11,9 +11,11 @@ RUN apk add --no-cache --virtual .build-deps \
     autoconf \
     g++ \
     gcc \
+    icu-dev \
     linux-headers \
     make \
-    && docker-php-ext-install opcache \
+    && docker-php-ext-install intl opcache \
+    && docker-php-ext-configure intl --enable-intl \
     && pecl install igbinary xdebug \
     && docker-php-ext-enable igbinary xdebug \
     && pecl install --configureoptions 'enable-apcu-igbinary="yes"' apcu \
