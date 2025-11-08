@@ -8,6 +8,8 @@ use App\Application\UseCase\CreateContactUseCase;
 use App\Application\UseCase\CreateContactUseCaseFactory;
 use App\Application\UseCase\ListContactsUseCase;
 use App\Application\UseCase\ListContactsUseCaseFactory;
+use App\Application\UseCase\ReadContactUseCase;
+use App\Application\UseCase\ReadContactUseCaseFactory;
 
 /**
  * The configuration provider for the Application module.
@@ -39,6 +41,7 @@ final readonly class ConfigProvider
             'factories' => [
                 // UseCases
                 ListContactsUseCase::class => ListContactsUseCaseFactory::class,
+                ReadContactUseCase::class => ReadContactUseCaseFactory::class,
                 CreateContactUseCase::class => CreateContactUseCaseFactory::class,
 
                 // Support
