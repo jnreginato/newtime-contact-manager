@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Application\UseCase;
 
-use Doctrine\ORM\EntityManagerInterface;
 use App\Domain\Entity\Contact;
 use App\Domain\Repository\ContactRepositoryInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
 use Throwable;
 
