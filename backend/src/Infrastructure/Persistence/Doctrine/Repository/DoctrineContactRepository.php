@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
-use App\Domain\Entity\EntityInterface;
 use App\Domain\Entity\Contact;
+use App\Domain\Entity\EntityInterface;
 use App\Domain\Exception\DomainResourceNotFoundException;
 use App\Domain\Repository\ContactRepositoryInterface;
-use App\Domain\ValueObject\Email;
 use App\Domain\ValueObject\ContactId;
+use App\Domain\ValueObject\Email;
 use Override;
 use Stringable;
 
@@ -44,7 +44,7 @@ final class DoctrineContactRepository extends QueryRepository implements Contact
     #[Override]
     public function byId(Stringable $identifier): ?Contact
     {
-        $contact = $this->find((string) $identifier);
+        $contact = $this->find((string)$identifier);
 
         return $contact instanceof Contact
             ? $contact

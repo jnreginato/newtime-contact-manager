@@ -50,11 +50,6 @@ final readonly class ValidatedInputMiddlewareFactory
         $responseFactory = $container->get(ApiThrowableResponseFactoryInterface::class);
         assert($responseFactory instanceof ApiThrowableResponseFactoryInterface);
 
-        return new ValidatedInputMiddleware(
-            $this->dtoClass,
-            $inputParser,
-            $inputValidator,
-            $responseFactory,
-        );
+        return new ValidatedInputMiddleware($this->dtoClass, $inputParser, $inputValidator, $responseFactory);
     }
 }

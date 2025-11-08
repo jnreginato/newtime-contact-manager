@@ -56,7 +56,7 @@ final readonly class ValidatedInputMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $attributeId = $request->getAttribute('id');
-        $parsedBody = (array)($request->getParsedBody() ?? []);
+        $parsedBody = (array) ($request->getParsedBody() ?? []);
 
         try {
             $this->inputParser->parse($attributeId, $parsedBody);

@@ -152,7 +152,7 @@ final class ConfigProvider
     {
         return [
             'connection' => [
-                'application_name' => (string)getenv('APPLICATION_NAME'),
+                'application_name' => (string) getenv('APPLICATION_NAME'),
                 'defaultTableOptions' => [
                     'charset' => 'utf8mb4',
                     'collate' => 'utf8mb4_unicode_ci',
@@ -204,7 +204,7 @@ final class ConfigProvider
                         'namespace' => 'doctrine_metadata',
                     ],
                 ],
-                'enabled' => (bool)getenv('CACHE_ENABLED') === true,
+                'enabled' => (bool) getenv('CACHE_ENABLED') === true,
             ],
             'entities_path' => ['src/Domain/Entity'],
             'is_dev_mode' => getenv('APPLICATION_ENV') === 'development',

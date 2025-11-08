@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Transaction;
 
-use Doctrine\ORM\EntityManagerInterface;
 use App\Application\Support\Transaction\TransactionManagerInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Override;
 
 /**

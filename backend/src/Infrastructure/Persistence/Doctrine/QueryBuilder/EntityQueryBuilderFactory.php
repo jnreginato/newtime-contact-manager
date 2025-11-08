@@ -31,7 +31,6 @@ final readonly class EntityQueryBuilderFactory
      * @param string $alias The alias for the entity in the query.
      * @param int|null $limit The maximum number of results to return.
      * @param int|null $offset The offset from which to start returning results.
-     *
      * @return EntityQueryBuilder The configured EntityQueryBuilder instance.
      */
     public function create(

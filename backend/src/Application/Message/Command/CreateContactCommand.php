@@ -30,16 +30,15 @@ final readonly class CreateContactCommand extends Command
      * Create an instance of CreateContactCommand from an associative array.
      *
      * @param array<string, mixed> $data The input data.
-     *
      * @return self An instance of CreateContactCommand.
      */
     #[Override]
     public static function fromArray(array $data): self
     {
         return new self(
-            (string)($data['firstName'] ?? ''),
-            (string)($data['lastName'] ?? ''),
-            (string)($data['email'] ?? ''),
+            (string) ($data['firstName'] ?? ''),
+            (string) ($data['lastName'] ?? ''),
+            (string) ($data['email'] ?? ''),
         );
     }
 

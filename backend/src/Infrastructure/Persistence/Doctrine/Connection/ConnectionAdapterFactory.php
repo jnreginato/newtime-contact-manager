@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Connection;
 
+use App\Infrastructure\Config\ConfigServiceInterface;
+use App\Infrastructure\Config\ConfigTypes;
+use App\Infrastructure\Config\ValidatorOptions;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Driver;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Logging\Middleware;
-use App\Infrastructure\Config\ConfigServiceInterface;
-use App\Infrastructure\Config\ConfigTypes;
-use App\Infrastructure\Config\ValidatorOptions;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;

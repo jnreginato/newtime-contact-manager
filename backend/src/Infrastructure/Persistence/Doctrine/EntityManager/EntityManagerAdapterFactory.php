@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\EntityManager;
 
-use Doctrine\Common\EventManager;
-use Doctrine\DBAL\Types\Type;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
-use Doctrine\ORM\ORMSetup;
 use App\Infrastructure\Config\ConfigServiceInterface;
 use App\Infrastructure\Config\ConfigTypes;
 use App\Infrastructure\Config\ValidatorOptions;
@@ -16,6 +11,11 @@ use App\Infrastructure\Persistence\Doctrine\Connection\ConnectionAdapter;
 use App\Infrastructure\Persistence\Doctrine\Filter\SoftDeleteFilter;
 use App\Infrastructure\Persistence\Doctrine\Types\CustomTypes;
 use App\Infrastructure\Persistence\Doctrine\Types\UtcDateTimeImmutableType;
+use Doctrine\Common\EventManager;
+use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
+use Doctrine\ORM\ORMSetup;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
 use Throwable;

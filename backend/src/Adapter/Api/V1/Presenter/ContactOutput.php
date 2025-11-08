@@ -47,7 +47,7 @@ final readonly class ContactOutput implements OutputInterface
     {
         if (!$result->entity instanceof Contact) {
             throw new InvalidArgumentException(
-                'Expected entity of type Contact, got ' . get_debug_type($result->entity)
+                'Expected entity of type Contact, got ' . get_debug_type($result->entity),
             );
         }
 

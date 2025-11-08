@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
-use App\Infrastructure\Persistence\Doctrine\QueryBuilder\EntityQueryBuilder;
-use App\Infrastructure\Persistence\Doctrine\QueryBuilder\EntityQueryBuilderFactory;
-use App\Infrastructure\Persistence\Doctrine\QueryBuilder\PagingApplier;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\ClassMetadata;
 use App\Application\Result\PaginatedResult;
 use App\Application\Result\PaginatedResultInterface;
 use App\Application\Result\Result;
 use App\Domain\Entity\EntityInterface;
 use App\Infrastructure\Api\Response\OutputInterface;
+use App\Infrastructure\Persistence\Doctrine\QueryBuilder\EntityQueryBuilder;
+use App\Infrastructure\Persistence\Doctrine\QueryBuilder\EntityQueryBuilderFactory;
+use App\Infrastructure\Persistence\Doctrine\QueryBuilder\PagingApplier;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Override;
 
 use function array_filter;
@@ -134,7 +134,7 @@ abstract class QueryRepository extends Repository implements QueryRepositoryInte
         $result = $this->queryBuilder->getQuery()->getResult();
         assert(is_array($result));
 
-        return array_filter($result, static fn ($item) => $item instanceof EntityInterface);
+        return array_filter($result, static fn($item) => $item instanceof EntityInterface);
     }
 
     /**
@@ -159,12 +159,12 @@ abstract class QueryRepository extends Repository implements QueryRepositoryInte
 
         $count = count($list);
         $perPage = $this->queryBuilder->getMaxResults() ?? 10;
-        $currentPage = (int) ($this->queryBuilder->getFirstResult() / max(1, $perPage)) + 1;
+        $currentPage = (int)($this->queryBuilder->getFirstResult() / max(1, $perPage)) + 1;
         $totalItems = $this->countLastQuery();
-        $totalPages = (int) ceil($totalItems / $perPage);
+        $totalPages = (int)ceil($totalItems / $perPage);
 
         $data = array_map(
-            static fn (EntityInterface $item): OutputInterface => $outputClass::fromResult(Result::fromDomain($item)),
+            static fn(EntityInterface $item): OutputInterface => $outputClass::fromResult(Result::fromDomain($item)),
             $list,
         );
 
@@ -187,7 +187,7 @@ abstract class QueryRepository extends Repository implements QueryRepositoryInte
 
         assert($this->queryBuilder instanceof EntityQueryBuilder);
 
-        return (int) $this->queryBuilder
+        return (int)$this->queryBuilder
             ->select(sprintf('COUNT(%s) total', $this->getAlias()))
             ->resetDQLPart('groupBy')
             ->resetDQLPart('orderBy')

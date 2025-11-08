@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Entity;
 
-use DateTimeImmutable;
-use Doctrine\ORM\Mapping as ORM;
 use App\Infrastructure\Persistence\Doctrine\Types\CustomTypes;
 use App\Infrastructure\Time\SystemClockUTC;
+use DateTimeImmutable;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Timestampable

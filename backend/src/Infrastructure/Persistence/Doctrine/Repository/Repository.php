@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
+use App\Domain\Entity\EntityInterface;
 use Doctrine\DBAL\LockMode;
 use Doctrine\ORM\EntityRepository;
-use App\Domain\Entity\EntityInterface;
 use Override;
 
 use function assert;
