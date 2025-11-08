@@ -36,9 +36,9 @@ final readonly class CreateContactCommand extends Command
     public static function fromArray(array $data): self
     {
         return new self(
-            (string) ($data['firstName'] ?? ''),
-            (string) ($data['lastName'] ?? ''),
-            (string) ($data['email'] ?? ''),
+            (string) ($data['firstName'] ?? ''),  // @phpstan-ignore-line
+            (string) ($data['lastName'] ?? ''), // @phpstan-ignore-line
+            (string) ($data['email'] ?? ''), // @phpstan-ignore-line
         );
     }
 

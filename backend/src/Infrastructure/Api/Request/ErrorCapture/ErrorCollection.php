@@ -158,7 +158,7 @@ final class ErrorCollection implements ErrorCollectionInterface
     /**
      * Unsets the error at the given offset.
      *
-     * @param mixed $offset The offset to unset.
+     * @param int|string $offset The offset to unset.
      */
     #[Override]
     public function offsetUnset(mixed $offset): void

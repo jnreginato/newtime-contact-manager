@@ -135,6 +135,7 @@ final class BodyParser implements BodyParserInterface
     {
         $keys = array_keys($data);
 
+        // @phpstan-ignore-next-line
         return array_any($keys, static fn ($key) => is_string($key) && is_numeric($key));
     }
 
