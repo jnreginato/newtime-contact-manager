@@ -20,41 +20,87 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="max-w-6xl mx-auto p-4">
-        <h1 class="text-2xl font-semibold mb-4">Contatti</h1>
+    <div class="min-h-screen bg-gray-900 text-gray-100 font-sans">
 
-        <div v-if="loading" class="text-gray-600">Caricamento…</div>
-        <div v-else-if="error" class="text-red-600">{{ error }}</div>
+        <div class="max-w-6xl mx-auto px-6 py-12">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-2xl font-semibold">Contatti</h1>
+                    <p class="text-gray-400 text-sm mt-1">
+                        Lista dei contatti registrati
+                    </p>
+                </div>
 
-        <div v-else>
-            <div v-if="contacts.length === 0" class="p-6 rounded border border-dashed text-gray-600">
-                Nessun contatto trovato.
+                <button
+                    class="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-500 transition-colors"
+                >
+                    Nuovo Contatto
+                </button>
             </div>
 
-            <div v-else class="overflow-x-auto">
-                <table class="min-w-full border border-gray-200 rounded">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="text-left p-3 border-b">Nome</th>
-                            <th class="text-left p-3 border-b">Cognome</th>
-                            <th class="text-left p-3 border-b">Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="c in contacts" :key="c.id" class="odd:bg-white even:bg-gray-50">
-                            <td class="p-3 border-b">{{ c.firstName }}</td>
-                            <td class="p-3 border-b">{{ c.lastName }}</td>
-                            <td class="p-3 border-b">
-                                <a :href="`mailto:${c.email}`" class="underline">{{ c.email }}</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Loading -->
+            <div v-if="loading" class="text-gray-400 animate-pulse">
+                Caricamento…
+            </div>
+
+            <!-- Erro -->
+            <div v-else-if="error" class="text-red-400 font-medium">
+                {{ error }}
+            </div>
+
+            <!-- Lista -->
+            <div v-else>
+                <!-- Vazio -->
+                <div
+                    v-if="contacts.length === 0"
+                    class="rounded-lg border border-gray-700 p-10 text-center text-gray-400 italic"
+                >
+                    Nessun contatto trovato.
+                </div>
+
+                <!-- Tabela -->
+                <div v-else class="overflow-hidden rounded-lg border border-gray-800">
+                    <table class="min-w-full divide-y divide-gray-800 text-sm">
+                        <thead class="text-gray-400 uppercase text-xs tracking-wider">
+                            <tr>
+                                <th class="px-4 py-3 text-left font-medium">Nome</th>
+                                <th class="px-4 py-3 text-left font-medium">Cognome</th>
+                                <th class="px-4 py-3 text-left font-medium">Email</th>
+                                <th class="px-4 py-3"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-gray-200 divide-y divide-gray-800">
+                            <tr
+                                v-for="c in contacts"
+                                :key="c.id"
+                                class="hover:bg-gray-800/60 transition-colors"
+                            >
+                                <td class="px-4 py-4">{{ c.firstName }}</td>
+                                <td class="px-4 py-4">{{ c.lastName }}</td>
+                                <td class="px-4 py-4">
+                                    <a
+                                        :href="`mailto:${c.email}`"
+                                        class="text-indigo-400 hover:underline"
+                                    >
+                                        {{ c.email }}
+                                    </a>
+                                </td>
+
+                                <td class="px-4 py-4 text-right">
+                                    <button
+                                        class="text-indigo-400 hover:text-indigo-300 transition-colors text-sm font-medium"
+                                    >
+                                        Modifica
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </template>
-
-<style scoped>
-/* usa Tailwind se já estiver; se não, estas classes funcionam com CSS utilitário simples */
-</style>
