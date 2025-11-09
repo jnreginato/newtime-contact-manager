@@ -10,6 +10,8 @@ use App\Application\UseCase\ListContactsUseCase;
 use App\Application\UseCase\ListContactsUseCaseFactory;
 use App\Application\UseCase\ReadContactUseCase;
 use App\Application\UseCase\ReadContactUseCaseFactory;
+use App\Application\UseCase\UpdateContactUseCase;
+use App\Application\UseCase\UpdateContactUseCaseFactory;
 
 /**
  * The configuration provider for the Application module.
@@ -43,6 +45,7 @@ final readonly class ConfigProvider
                 ListContactsUseCase::class => ListContactsUseCaseFactory::class,
                 ReadContactUseCase::class => ReadContactUseCaseFactory::class,
                 CreateContactUseCase::class => CreateContactUseCaseFactory::class,
+                UpdateContactUseCase::class => UpdateContactUseCaseFactory::class,
 
                 // Support
                 Support\Transaction\TransactionRunner::class => Support\Transaction\TransactionRunnerFactory::class,
