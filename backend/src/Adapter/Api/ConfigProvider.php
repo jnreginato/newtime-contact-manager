@@ -24,6 +24,7 @@ use App\Adapter\Api\V1\Input\UpdateContactInput;
  * @phpstan-type ServiceManagerConfiguration array{
  *      factories?: array<class-string|string, class-string|callable|object>,
  *  }
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  */
 final readonly class ConfigProvider
 {
