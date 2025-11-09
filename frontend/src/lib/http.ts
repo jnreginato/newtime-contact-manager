@@ -49,3 +49,16 @@ export async function updateContact(id: number, body: Omit<Contact, 'id'>) {
   });
   return res.json()
 }
+
+export async function deleteContact(id: number) {
+  const res = await fetch(`${BASE_URL}/api/v1/contacts/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`DELETE /contacts failed: ${res.status} ${text}`);
+  }
+
+  return res.text();
+}
