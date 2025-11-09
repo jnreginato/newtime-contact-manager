@@ -12,10 +12,10 @@ use App\Domain\Entity\Contact;
 use App\Domain\Exception\DomainDuplicatedResourceException;
 use App\Domain\Exception\DomainResourceNotFoundException;
 use App\Domain\Repository\ContactRepositoryInterface;
+use App\Domain\ValueObject\ContactId;
 use App\Domain\ValueObject\Email;
 use App\Domain\ValueObject\FirstName;
 use App\Domain\ValueObject\LastName;
-use App\Domain\ValueObject\ContactId;
 
 /**
  * Use case for updating a contact.
@@ -53,7 +53,7 @@ final readonly class UpdateContactUseCase
         $this->rename($command, $contact);
         $this->changeEmail($command, $contact);
 
-        $contact = $this->transactionRunner->run(fn () => $this->contactRepository->save($contact));
+        $contact = $this->transactionRunner->run(fn() => $this->contactRepository->save($contact));
 
         return Result::fromDomain($contact);
     }
@@ -67,10 +67,10 @@ final readonly class UpdateContactUseCase
     private function rename(UpdateContactCommand $command, Contact $contact): void
     {
         $newFirstName = $command->firstName->present
-            ? new FirstName((string) $command->firstName->value)
+            ? new FirstName((string)$command->firstName->value)
             : null;
         $newLastName = $command->lastName->present
-            ? new LastName((string) $command->lastName->value)
+            ? new LastName((string)$command->lastName->value)
             : null;
 
         if ($newFirstName === null && $newLastName === null) {
@@ -92,13 +92,13 @@ final readonly class UpdateContactUseCase
             return;
         }
 
-        $email = new Email((string) $command->email->value);
+        $email = new Email((string)$command->email->value);
 
         // if email is changing, ensure no other contact has it
         $existing = $this->contactRepository->byEmail($email);
 
         if ($existing && $existing->id() !== $contact->id()) {
-            throw new DomainDuplicatedResourceException((string) $email);
+            throw new DomainDuplicatedResourceException((string)$email);
         }
 
         $contact->changeEmail($email);
