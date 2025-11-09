@@ -1,18 +1,11 @@
 <script setup lang="ts">
 import {onMounted} from 'vue'
-import {useContacts} from '@/composables/useContacts'
+import {useContactsStore} from '@/stores/contacts'
 
-const {
-    loading,
-    error,
-    contacts,
-    meta,
-    fetchContacts,
-    goToPage
-} = useContacts();
+const store = useContactsStore();
 
 onMounted(() => {
-    fetchContacts()
+    store.fetchContacts()
 })
 </script>
 <template>
@@ -29,16 +22,16 @@ onMounted(() => {
                 </button>
             </div>
             <!-- Loading -->
-            <div v-if="loading" class="text-gray-400 animate-pulse">
+            <div v-if="store.loading" class="text-gray-400 animate-pulse">
                 Caricamento…
             </div>
             <!-- Error -->
-            <div v-else-if="error" class="text-red-400 font-medium">
-                {{ error }}
+            <div v-else-if="store.error" class="text-red-400 font-medium">
+                {{ store.error }}
             </div>
             <!-- List -->
             <div v-else>
-                <div v-if="contacts.length === 0" class="rounded-lg border border-gray-700 p-10 text-center text-gray-400 italic">
+                <div v-if="store.contacts.length === 0" class="rounded-lg border border-gray-700 p-10 text-center text-gray-400 italic">
                     Nessun contatto trovato.
                 </div>
                 <!-- Table -->
@@ -53,7 +46,7 @@ onMounted(() => {
                             </tr>
                         </thead>
                         <tbody class="text-gray-200 divide-y divide-gray-800">
-                            <tr v-for="c in contacts" :key="c.id" class="hover:bg-gray-800/60 transition-colors">
+                            <tr v-for="c in store.contacts" :key="c.id" class="hover:bg-gray-800/60 transition-colors">
                                 <td class="px-4 py-4">{{ c.firstName }}</td>
                                 <td class="px-4 py-4">{{ c.lastName }}</td>
                                 <td class="px-4 py-4">
@@ -73,24 +66,24 @@ onMounted(() => {
                 <!-- Pagination -->
                 <div class="flex items-center justify-between mt-6">
                     <!-- Total -->
-                    <p class="text-sm text-gray-400"> Mostrando pagina {{ meta.currentPage }} di {{ meta.totalPages }} — {{ meta.totalItems }} risultati </p>
+                    <p class="text-sm text-gray-400"> Mostrando pagina {{ store.meta.currentPage }} di {{ store.meta.totalPages }} — {{ store.meta.totalItems }} risultati </p>
                     <!-- Controls -->
                     <div class="flex items-center space-x-2">
                         <!-- Previous -->
                         <button
-                            @click="goToPage(meta.currentPage - 1)"
-                            :disabled="meta.currentPage === 1"
+                            @click="store.goToPage(store.meta.currentPage - 1)"
+                            :disabled="store.meta.currentPage === 1"
                             class="px-3 py-1 text-sm rounded-lg border border-gray-700 hover:bg-gray-800 disabled:opacity-30"
                         >
                             ‹
                         </button>
                         <!-- Dynamic navigation -->
                         <button
-                            v-for="page in meta.totalPages"
+                            v-for="page in store.meta.totalPages"
                             :key="page"
-                            @click="goToPage(page)"
+                            @click="store.goToPage(page)"
                             class="px-3 py-1 text-sm rounded-lg border"
-                            :class="page === meta.currentPage
+                            :class="page === store.meta.currentPage
                                 ? 'bg-indigo-600 border-indigo-600 text-white'
                                 : 'border-gray-700 hover:bg-gray-800'"
                         >
@@ -98,8 +91,8 @@ onMounted(() => {
                         </button>
                         <!-- Next -->
                         <button
-                            @click="goToPage(meta.currentPage + 1)"
-                            :disabled="meta.currentPage === meta.totalPages"
+                            @click="store.goToPage(store.meta.currentPage + 1)"
+                            :disabled="store.meta.currentPage === store.meta.totalPages"
                             class="px-3 py-1 text-sm rounded-lg border border-gray-700 hover:bg-gray-800 disabled:opacity-30"
                         >
                             ›
