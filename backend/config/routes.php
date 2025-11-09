@@ -17,4 +17,5 @@ return static function (Application $app): void {
     $app->get(API_V1 . CONTACTS . NUMERIC_ID, ['ReadContactMiddleware', ReadContactHandler::class]);
     $app->post(API_V1 . CONTACTS, ['CreateContactMiddleware', CreateContactHandler::class]);
     $app->patch(API_V1 . CONTACTS . NUMERIC_ID, ['UpdateContactMiddleware', UpdateContactHandler::class]);
+    $app->delete(API_V1 . CONTACTS . NUMERIC_ID, ['DeleteContactMiddleware', DeleteContactHandler::class]);
 };
