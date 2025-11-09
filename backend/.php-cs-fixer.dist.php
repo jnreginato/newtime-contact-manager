@@ -9,6 +9,7 @@ use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 $finder = Finder::create()
     ->in(__DIR__ . '/config')
     ->in(__DIR__ . '/public')
+    ->in(__DIR__ . '/src')
     ->exclude(__DIR__ . '/vendor');
 
 return (new Config())

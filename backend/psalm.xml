@@ -16,7 +16,6 @@
         <directory name="config"/>
         <directory name="public"/>
         <directory name="src"/>
-        <directory name="tests"/>
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>
