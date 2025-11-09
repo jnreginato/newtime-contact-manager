@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Adapter\Api\Middleware\CorsMiddleware;
 use Mezzio\Application;
 
 return static function (Application $app): void {
@@ -9,6 +10,7 @@ return static function (Application $app): void {
     $app->pipe(Mezzio\Helper\ServerUrlMiddleware::class);
     $app->pipe(Mezzio\Helper\BodyParams\BodyParamsMiddleware::class);
     $app->pipe(Mezzio\Router\Middleware\RouteMiddleware::class);
+    $app->pipe(CorsMiddleware::class);
     $app->pipe(Mezzio\Router\Middleware\ImplicitHeadMiddleware::class);
     $app->pipe(Mezzio\Router\Middleware\ImplicitOptionsMiddleware::class);
     $app->pipe(Mezzio\Router\Middleware\MethodNotAllowedMiddleware::class);
