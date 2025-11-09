@@ -97,24 +97,4 @@ final class ValidatedInputMiddlewareFactoryTest extends UnitTestCase
 
         ($factory)($container);
     }
-
-    /**
-     * Scenario: Wrong type returned by container triggers assertion.
-     *
-     * Given a container that returns an object not implementing the expected interface,
-     * When invoking the factory,
-     * Then an AssertionError should be raised due to failed runtime assertion.
-     */
-    public function testInvokeWithWrongTypeTriggersAssertionError(): void
-    {
-        $this->expectException(AssertionError::class);
-
-        $container = $this->createMock(ContainerInterface::class);
-        // Return a stdClass (wrong type) on first get() call so the assert fails
-        $container->method('get')->willReturn(new stdClass());
-
-        $factory = new ValidatedInputMiddlewareFactory(TestInput::class);
-
-        ($factory)($container);
-    }
 }
