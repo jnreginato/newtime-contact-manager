@@ -1,7 +1,7 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import {createRouter, createWebHistory, type RouteRecordRaw} from 'vue-router';
 import ContactsTable from '@/components/ContactsTable.vue';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {path: '/', redirect: '/contacts'},
   {path: '/contacts', component: ContactsTable, meta: {title: 'Contatti'}},
 ];
