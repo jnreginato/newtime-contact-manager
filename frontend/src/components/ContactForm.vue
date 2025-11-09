@@ -6,6 +6,7 @@ import {createContact, getContactById, updateContact} from '@/lib/http'
 import {useForm, Field, ErrorMessage} from "vee-validate";
 import {toTypedSchema} from "@vee-validate/zod";
 import {contactSchema} from "@/validation/contactSchema";
+import {toast} from "vue-sonner";
 
 const route = useRoute();
 const router = useRouter();
@@ -43,12 +44,16 @@ const submit = handleSubmit(async (values) => {
             await updateContact(Number(route.params.id), {
                 ...values
             });
+            toast.success("Contatto aggiornato con successo!");
         } else {
             await createContact(values);
+            toast.success("Nuovo contatto creato!");
         }
 
         await store.fetchContacts();
         router.push('/contacts');
+    } catch (err: any) {
+        toast.error(err?.message ?? "Errore durante il salvataggio");
     } finally {
         isSubmitting.value = false;
     }
