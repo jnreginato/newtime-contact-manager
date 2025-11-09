@@ -41,9 +41,9 @@ export async function createContact(body: Omit<Contact, 'id'>) {
   return res.json()
 }
 
-export async function updateContact(id: number, body: Contact) {
+export async function updateContact(id: number, body: Omit<Contact, 'id'>) {
   const res = await fetch(`${BASE_URL}/api/v1/contacts/${id}`, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
