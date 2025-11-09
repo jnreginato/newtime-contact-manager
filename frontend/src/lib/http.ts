@@ -1,3 +1,5 @@
+import {Contact} from "@/types/contact";
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '';
 
 export async function getContacts(params?: {
@@ -23,4 +25,27 @@ export async function getContacts(params?: {
   }
 
   return res.json();
+}
+
+export async function getContactById(id: number) {
+  const res = await fetch(`${BASE_URL}/api/v1/contacts/${id}`);
+  return res.json()
+}
+
+export async function createContact(body: Omit<Contact, 'id'>) {
+  const res = await fetch(`${BASE_URL}/api/v1/contacts`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  return res.json()
+}
+
+export async function updateContact(id: number, body: Contact) {
+  const res = await fetch(`${BASE_URL}/api/v1/contacts/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  return res.json()
 }

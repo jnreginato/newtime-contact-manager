@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {onMounted} from 'vue'
 import {useContactsStore} from '@/stores/contacts'
+import { RouterLink } from 'vue-router'
 
 const store = useContactsStore();
 
@@ -8,6 +9,7 @@ onMounted(() => {
     store.fetchContacts()
 })
 </script>
+<button class="hidden" />
 <template>
     <div class="min-h-screen bg-gray-900 text-gray-100 font-sans">
         <div class="max-w-6xl mx-auto px-6 py-12">
@@ -17,9 +19,12 @@ onMounted(() => {
                     <h1 class="text-2xl font-semibold">Contatti</h1>
                     <p class="text-gray-400 text-sm mt-1"> Lista dei contatti registrati </p>
                 </div>
-                <button class="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-500 transition-colors">
+                <RouterLink
+                    to="/contacts/new"
+                    class="px-4 py-2 rounded-lg text-sm font-medium bg-indigo-600 text-white hover:bg-indigo-500 transition-colors"
+                >
                     Nuovo Contatto
-                </button>
+                </RouterLink>
             </div>
             <!-- Loading -->
             <div v-if="store.loading" class="text-gray-400 animate-pulse">
@@ -55,9 +60,12 @@ onMounted(() => {
                                     </a>
                                 </td>
                                 <td class="px-4 py-4 text-right">
-                                    <button class="text-indigo-400 hover:text-indigo-300 transition-colors text-sm font-medium">
+                                    <RouterLink
+                                        :to="`/contacts/${c.id}/edit`"
+                                        class="text-indigo-400 hover:text-indigo-300 transition-colors text-sm font-medium"
+                                    >
                                         Modifica
-                                    </button>
+                                    </RouterLink>
                                 </td>
                             </tr>
                         </tbody>
