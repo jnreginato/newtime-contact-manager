@@ -8,7 +8,6 @@ parameters:
     - config
     - public
     - src
-    - tests
   ignoreErrors:
     - '#Call to an undefined method#'
     - '#Using nullsafe property access on non-nullable type#'

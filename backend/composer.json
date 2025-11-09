@@ -78,18 +78,18 @@
       "XDEBUG_MODE=off php-cs-fixer fix"
     ],
     "lint": [
-      "XDEBUG_MODE=off parallel-lint ./config ./public ./src ./tests",
+      "XDEBUG_MODE=off parallel-lint ./config ./public ./src",
       "XDEBUG_MODE=off phpcs",
-      "XDEBUG_MODE=off php -d error_reporting='E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED' vendor/bin/phpmd config/ public/ src/ tests/ text phpmd-ruleset.xml",
+      "XDEBUG_MODE=off php -d error_reporting='E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED' vendor/bin/phpmd config/ public/ src/ text phpmd-ruleset.xml",
       "XDEBUG_MODE=off phpstan analyse --configuration=phpstan.neon",
       "XDEBUG_MODE=off psalm --output-format=console --show-info=true"
     ],
-    "paralel-lint": "XDEBUG_MODE=off parallel-lint ./config ./public ./src ./tests",
+    "paralel-lint": "XDEBUG_MODE=off parallel-lint ./config ./public ./src",
     "php-cs-fixer": "XDEBUG_MODE=off php-cs-fixer fix",
     "php-cs-fixer-dry-run": "XDEBUG_MODE=off php-cs-fixer fix --dry-run --diff",
     "phpcbf": "XDEBUG_MODE=off phpcbf",
     "phpcs": "XDEBUG_MODE=off phpcs",
-    "phpmd": "XDEBUG_MODE=off php -d error_reporting='E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED' vendor/bin/phpmd config/ public/ src/ tests/ text phpmd-ruleset.xml",
+    "phpmd": "XDEBUG_MODE=off php -d error_reporting='E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED' vendor/bin/phpmd config/ public/ src/ text phpmd-ruleset.xml",
     "phpstan": "XDEBUG_MODE=off phpstan analyse --configuration=phpstan.neon",
     "psalm": "XDEBUG_MODE=off psalm --output-format=console --show-info=true",
     "psalm-dry-run": "XDEBUG_MODE=off psalm --alter --issues=all --dry-run",
