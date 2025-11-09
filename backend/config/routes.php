@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Adapter\Api\V1\Handler\CreateContactHandler;
+use App\Adapter\Api\V1\Handler\DeleteContactHandler;
 use App\Adapter\Api\V1\Handler\ListContactsHandler;
 use App\Adapter\Api\V1\Handler\ReadContactHandler;
 use App\Adapter\Api\V1\Handler\UpdateContactHandler;
