@@ -95,7 +95,7 @@ newtime-contact-manager/
 └── README.md             # Project documentation
 ```
 
-## Arquitecture Principles
+## Architecture Principles
 
 See [Architecture Principles](ARCHITECTURE_PRINCIPLES.md) for more information.
 
@@ -106,6 +106,11 @@ See [Architecture Principles](ARCHITECTURE_PRINCIPLES.md) for more information.
 - [Mezzio Framework](https://docs.mezzio.dev)
 - [Vue 3](https://vuejs.org/)
 - [Vite](https://vitejs.dev)
+
+## Postman Collection
+
+A Postman collection is available for testing the API endpoints.
+Link: [newtime-contact-manager.postman_collection.json](newtime-contact-manager.postman_collection.json)
 
 [php-url]: https://www.php.net/
 
