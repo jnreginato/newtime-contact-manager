@@ -1,13 +1,38 @@
 <script setup lang="ts">
-import {onMounted} from 'vue'
+import {ref, onMounted} from 'vue'
 import {useContactsStore} from '@/stores/contacts'
 import {RouterLink} from 'vue-router'
+import ConfirmModal from '@/components/ConfirmModal.vue'
+import {toast} from "vue-sonner";
 
 const store = useContactsStore();
 
 onMounted(() => {
     store.fetchContacts()
-})
+});
+
+const modalVisible = ref(false);
+const selectedContactId = ref<number | null>(null);
+
+function requestDelete(id: number) {
+    selectedContactId.value = id;
+    modalVisible.value = true
+}
+
+function confirmDelete() {
+    if (selectedContactId.value == null) {
+        return
+    }
+    try {
+        store.removeContact(selectedContactId.value);
+        toast.success("Contatto eliminato con successo!")
+    } catch {
+        toast.error("Errore durante l'eliminazione.")
+    } finally {
+        modalVisible.value = false;
+        selectedContactId.value = null
+    }
+}
 </script>
 <button class="hidden"/>
 <template>
@@ -48,7 +73,11 @@ onMounted(() => {
                         <th class="px-4 py-3"></th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-200 divide-y divide-gray-800">
+                <transition-group
+                    tag="tbody"
+                    class="text-gray-200 divide-y divide-gray-800"
+                    name="row"
+                >
                     <tr v-for="c in store.contacts" :key="c.id" class="hover:bg-gray-800/60 transition-colors">
                         <td class="px-4 py-4">{{ c.firstName }}</td>
                         <td class="px-4 py-4">{{ c.lastName }}</td>
@@ -64,9 +93,16 @@ onMounted(() => {
                             >
                                 Modifica
                             </RouterLink>
+                            |
+                            <button
+                                @click="requestDelete(c.id)"
+                                class="text-red-400 hover:text-red-300 transition-colors text-sm font-medium"
+                            >
+                                Elimina
+                            </button>
                         </td>
                     </tr>
-                </tbody>
+                </transition-group>
             </table>
         </div>
         <!-- Pagination -->
@@ -106,4 +142,33 @@ onMounted(() => {
             </div>
         </div>
     </div>
+    <ConfirmModal
+        :show="modalVisible"
+        title="Elimina Contatto"
+        message="Questa azione non può essere annullata. Procedere?"
+        confirmText="Elimina"
+        cancelText="Annulla"
+        @confirm="confirmDelete"
+        @cancel="modalVisible = false"
+    />
 </template>
+<style scoped>
+.row-enter-active,
+.row-leave-active {
+    transition: all 0.25s ease;
+}
+
+.row-enter-from {
+    opacity: 0;
+    transform: translateY(-4px);
+}
+
+.row-leave-to {
+    opacity: 0;
+    transform: translateY(4px);
+}
+
+.row-leave-active {
+    position: absolute;
+}
+</style>

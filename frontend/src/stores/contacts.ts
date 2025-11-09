@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
 import type {Contact, Paginated} from '@/types/contact'
-import {getContacts} from '@/lib/http'
+import {getContacts, deleteContact} from '@/lib/http'
 
 export const useContactsStore = defineStore('contacts', () => {
   const loading = ref(false);
@@ -44,7 +44,20 @@ export const useContactsStore = defineStore('contacts', () => {
     fetchContacts(page)
   }
 
-  return {loading, error, contacts, meta, fetchContacts, goToPage}
+  async function removeContact(id: number) {
+    await deleteContact(id);
+    await fetchContacts();
+  }
+
+  return {
+    loading,
+    error,
+    contacts,
+    meta,
+    fetchContacts,
+    goToPage,
+    removeContact,
+  }
 }, {
   persist: {
     storage: localStorage,
