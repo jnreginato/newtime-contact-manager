@@ -147,5 +147,3 @@ Link: [newtime-contact-manager.postman_collection.json](newtime-contact-manager.
 [vite-url]: https://vitejs.dev/
 
 [vite-badge]: https://img.shields.io/badge/vite-5-gray?style=for-the-badge&logo=vite&labelColor=646CFF&logoColor=white
-
-
