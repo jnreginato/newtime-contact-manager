@@ -86,17 +86,16 @@ function confirmDelete() {
                                 {{ c.email }}
                             </a>
                         </td>
-                        <td class="px-4 py-4 text-right">
+                        <td class="px-4 py-4 text-right flex items-center gap-3 justify-end">
                             <RouterLink
                                 :to="`/contacts/${c.id}/edit`"
-                                class="text-indigo-400 hover:text-indigo-300 transition-colors text-sm font-medium"
+                                class="px-2 py-1 rounded-full text-xs font-medium border border-indigo-600/60 text-indigo-300 hover:bg-indigo-600/20 transition-colors"
                             >
                                 Modifica
                             </RouterLink>
-                            |
                             <button
                                 @click="requestDelete(c.id)"
-                                class="text-red-400 hover:text-red-300 transition-colors text-sm font-medium"
+                                class="px-2 py-1 rounded-full text-xs font-medium border border-red-600/50 text-red-300 hover:bg-red-600/20 transition-colors"
                             >
                                 Elimina
                             </button>
