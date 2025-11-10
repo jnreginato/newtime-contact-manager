@@ -260,7 +260,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/v1/contacts?pageSize=2&pageNumber=1",
+							"raw": "{{base_url}}/api/v1/contacts?page[size]=2&page[number]=1",
 							"host": [
 								"{{base_url}}"
 							],
@@ -271,11 +271,11 @@
 							],
 							"query": [
 								{
-									"key": "pageSize",
+									"key": "page[size]",
 									"value": "2"
 								},
 								{
-									"key": "pageNumber",
+									"key": "page[number]",
 									"value": "1"
 								}
 							]
