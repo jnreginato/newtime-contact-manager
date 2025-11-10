@@ -39,6 +39,7 @@ final readonly class EntityQueryBuilderFactory
         ?int $limit = null,
         ?int $offset = null,
     ): EntityQueryBuilder {
+        $this->entityManager->getFilters()->enable('soft_delete');
         $queryBuilder = new EntityQueryBuilder($this->entityManager, $entityClass, $alias);
 
         $queryBuilder
