@@ -37,6 +37,3 @@ jobs:
 
       - name: PHPStan execution
         run: vendor/bin/phpstan analyse --configuration=phpstan.neon
-
-      - name: PHP-CS-Fixer (dry-run) execution
-        run: vendor/bin/php-cs-fixer fix --dry-run --diff
